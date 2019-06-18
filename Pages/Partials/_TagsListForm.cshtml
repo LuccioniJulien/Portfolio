@@ -1,0 +1,8 @@
+@model List<Portfolio.Models.Tag>
+
+<div class="tags">
+    @foreach (var (name,colorClass) in Model)
+    {
+        <span class="tag @colorClass">@name</span>
+    }
+</div>

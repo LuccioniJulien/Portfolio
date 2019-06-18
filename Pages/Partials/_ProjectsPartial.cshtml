@@ -1,0 +1,31 @@
+@model IEnumerable<Portfolio.Models.Project>
+
+<div class="container">
+    @foreach (var (name,description,githubLink,Tags) in Model)
+    {
+        <div class="card" style="border-radius:8px;width:800px;margin: auto;">
+            <div class="card-content">
+                <div class="columns">
+                    <div class="column">
+                        <div class="content">
+                            <h3>@name</h3>
+                            <partial name="_TagsListForm" model="Tags"/>
+                            <p class="has-text-justified"> @description</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <footer class="card-footer">
+                @if (!string.IsNullOrEmpty(githubLink))
+                {
+                    <a href="@githubLink" target="_blank" class="card-footer-item">Lien github</a>
+                }
+                else
+                {
+                    <a class="card-footer-item">Confidentiel</a>
+                }
+            </footer>
+        </div>
+        <br/>
+    }
+</div>
