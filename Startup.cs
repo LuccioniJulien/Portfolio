@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Portfolio.Dao;
+using Portfolio.Interfaces;
 using Portfolio.Models;
 
 namespace Portfolio
@@ -28,7 +29,8 @@ namespace Portfolio
             services.AddEntityFrameworkNpgsql()
                 .AddDbContext<PortfolioEntities>()
                 .BuildServiceProvider();
-            services.AddScoped<Db>();
+            // injection de dépendance pour la couche d'accès aux données
+            services.AddScoped<IDb, Db>();
             services.AddEnv(builder =>
             {
                 builder

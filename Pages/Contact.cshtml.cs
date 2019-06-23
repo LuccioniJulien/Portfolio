@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Portfolio.Dao;
+using Portfolio.Interfaces;
 using Portfolio.Models;
 using Portfolio.Utils;
 
@@ -10,9 +11,9 @@ namespace Portfolio.Pages
 {
     public class ContactModel : PageModel
     {
-        private readonly Db _db;
+        private readonly IDb _db;
 
-        public ContactModel(Db db)
+        public ContactModel(IDb db)
         {
             _db = db;
         }

@@ -7,30 +7,30 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Portfolio.Dao;
+using Portfolio.Interfaces;
 using Portfolio.Models;
 
 namespace Portfolio.Pages
 {
     public class IndexModel : PageModel
     {
-        private readonly Db _db;
+        private readonly IDb _db;
 
-        public IndexModel(Db db)
+        public IndexModel(IDb db)
         {
             _db = db;
         }
 
         public List<string> Projects { get; set; }
 
-        public void OnGet()
-        { }
+        public void OnGet() { }
 
         public PartialViewResult OnGetHomePartial() => Partial("_HomePartial");
 
         public PartialViewResult OnGetProjectsPartial()
         {
             var projects = _db.Projects.GetProjectsWithTagsByAuthor("Julien Luccioni")
-                                       .ToList();
+                .ToList();
 
             return new PartialViewResult
             {

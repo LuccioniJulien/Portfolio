@@ -12,6 +12,7 @@ namespace Portfolio.Models
     [Table("Mail")]
     public class Mailer
     {
+        [Key]
         public int Id { get; set; }
 
         [Required(ErrorMessage = "L'email est requis.")]

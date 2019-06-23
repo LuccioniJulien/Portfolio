@@ -2,12 +2,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using Portfolio.Interfaces;
 using Portfolio.Models;
 
 namespace Portfolio.Dao
 {
-    // Classe qui implémentera le CRUD de façon générique
-    public abstract class RepositoryBase<T> where T : class
+    public abstract class RepositoryBase<T> : IRepositoryBase<T> where T : class
     {
         protected PortfolioEntities _context;
         public RepositoryBase(PortfolioEntities context)
@@ -15,10 +15,11 @@ namespace Portfolio.Dao
             _context = context;
         }
 
-        public void Create(T entity)
+        public T Create(T entity)
         {
             this._context.Set<T>().Add(entity);
             this._context.SaveChanges();
+            return entity;
         }
 
         public IEnumerable<T> FindAll(Expression<Func<T, bool>> predicat = null)

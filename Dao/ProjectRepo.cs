@@ -1,27 +1,19 @@
 using System.Collections.Generic;
 using System.Linq;
+using Portfolio.Interfaces;
 using Portfolio.Models;
 
 namespace Portfolio.Dao
 {
     // classe ou seront rangé les requêtes concernant la table Mailer
     // la classe Project est générée automatiquement par Entity Framework grace au designer
-    public class ProjectRepo : RepositoryBase<Project>
+    public class ProjectRepo : RepositoryBase<Project>, IProjectRepo
     {
         public ProjectRepo(PortfolioEntities context) : base(context)
         {
 
         }
-        // un projet a plusieurs tags
-        // un tag peut être attribué à plusieurs projets
-        // c'est une relation Has_many des deux cotés
-        public void AddTag(int idProject, int idTag)
-        {
-            Project project = _context.Projects.Find(idProject);
-            Tag tag = _context.Tags.Find(idTag);
-            project.Tags.Add(tag);
-            _context.SaveChanges();
-        }
+
         // Requête spécifique 
         public IEnumerable<Project> GetProjectsWithTagsByAuthor(string name)
         {

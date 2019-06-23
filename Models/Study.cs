@@ -1,11 +1,13 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using Microsoft.EntityFrameworkCore;
 
 namespace Portfolio.Models
 {
     public class Study
     {
+        [Key]
         public int Id { get; set; }
         public string Name { get; set; }
         public DateTime DateDebut { get; set; }
