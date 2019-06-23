@@ -61,7 +61,7 @@ namespace Portfolio.Models
             context.AddRange(new List<Tag>
             {
                 csharp, netcore, html, css, js, node, sqlserver, postg, ruby, android, webform, netfram, efF, efc,
-                swift, ios,typescript,ios
+                swift, ios,typescript,typeorm
             });
             context.SaveChanges();
 
