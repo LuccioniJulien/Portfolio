@@ -15,7 +15,7 @@ Variable du fichier .env à la racine du projet :
 ```
 DB_HOST
 DB_NAME
-DB_USER=
-DB_PASSWORD=
-SENDGRID_API_KEY=
+DB_USER
+DB_PASSWORD
+SENDGRID_API_KEY
 ```

@@ -57,9 +57,9 @@ namespace Portfolio
             app.UseMvc();
             using (var context = new PortfolioEntities())
             {
-                // context.Database.EnsureDeleted();
-                // context.Database.EnsureCreated();
-                // context.Seed(context);
+                context.Database.EnsureDeleted();
+                context.Database.EnsureCreated();
+                context.Seed(context);
             }
         }
     }
