@@ -111,16 +111,16 @@ namespace Portfolio.Models
                 GithubLink = "https://github.com/LuccioniJulien/Weather"
             };
 
-              var apiStypescript = new Project
+            var apiStypescript = new Project
             {
                 AuthorId = author.Id,
                 Description = "Api rest fait dans le cadre d'un projet tuteuré. Cette Api fourni des données pour une application mobile visant à fournir des informations"
-                +" sur la cinquième extinction de masse.",
+              + " sur la cinquième extinction de masse.",
                 Name = "Api annihimal",
-                GithubLink = "https://github.com/LuccioniJulien/Portfolio"
+                GithubLink = "https://github.com/LuccioniJulien/annihimal-api"
             };
 
-            context.AddRange(new List<Project> { portf, api, tuturu, spie, weather, apiStypescript});
+            context.AddRange(new List<Project> { portf, api, tuturu, spie, weather, apiStypescript });
             context.SaveChanges();
 
             var portflien = new List<Project_Has_Tags>
