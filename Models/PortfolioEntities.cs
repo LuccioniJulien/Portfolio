@@ -53,7 +53,7 @@ namespace Portfolio.Models
             var efc = new Tag("EF core", "is-warning");
 
             var typescript = new Tag("Typescript", "is-info");
-            var typeorm = new Tag("Typescript", "is-warning");
+            var typeorm = new Tag("Typeorm", "is-warning");
 
             var swift = new Tag("swift", "is-danger");
             var ios = new Tag("ios", "is-light");
