@@ -58,7 +58,7 @@ namespace Portfolio
             using (var context = new PortfolioEntities())
             {
                 context.Database.EnsureCreated();
-                bool isAlreadySeed = Environment.GetEnvironmentVariable("SEED") == "true";
+                bool isAlreadySeed = Environment.GetEnvironmentVariable("ISALREADYSEED") == "true";
                 if (!isAlreadySeed)
                 {
                     context.Seed(context);
