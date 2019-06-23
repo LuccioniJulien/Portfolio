@@ -55,11 +55,11 @@ namespace Portfolio
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseMvc();
-            using (var context = new PortfolioEntities())
-            {
-                context.Database.EnsureCreated();
-                context.Seed(context);
-            }
+            // using (var context = new PortfolioEntities())
+            // {
+            //     context.Database.EnsureCreated();
+            //     context.Seed(context);
+            // }
         }
     }
 }
