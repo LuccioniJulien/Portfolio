@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Text;
 using dotenv.net.DependencyInjection.Extensions;
 using Microsoft.AspNetCore.Builder;
@@ -58,8 +59,8 @@ namespace Portfolio
             using (var context = new PortfolioEntities())
             {
                 context.Database.EnsureCreated();
-                bool isAlreadySeed = Environment.GetEnvironmentVariable("ISALREADYSEED") == "true";
-                if (!isAlreadySeed)
+
+                if (context.Projects.Count() == 0)
                 {
                     context.Seed(context);
                 }
