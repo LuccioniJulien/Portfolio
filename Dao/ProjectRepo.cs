@@ -24,7 +24,7 @@ namespace Portfolio.Dao
                                                                                         .Select(pht => pht.Tag)
                                                                                         .ToList();
                                                     return project;
-                                                });
+                                                }).OrderBy(x => x.Name);
 
             return projects;
         }
