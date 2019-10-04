@@ -30,8 +30,9 @@ namespace Portfolio.Utils
                 await client.SendEmailAsync(msg);
                 return true;
             }
-            catch
+            catch(Exception e)
             {
+                Console.WriteLine(e.Message);
                 return false;
             }
         }

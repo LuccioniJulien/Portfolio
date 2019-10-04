@@ -63,7 +63,7 @@ namespace Portfolio.Pages
             if (!ModelState.IsValid)
                 return Partial("_ContactPartial");
 
-            _db.Mailers.Create(Mail);
+            _db.Mailers.Create(Mail);    
             await MailHelper.Send(Mail);
 
             Mail.Status = "Mail envoyé !";

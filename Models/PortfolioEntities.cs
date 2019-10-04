@@ -92,7 +92,7 @@ namespace Portfolio.Models
                     "Application android faite avec ruboto, une gem ruby pour faire des applications android en ruby." +
                     " Un bouton avec 3 animations différentes et 3 sons différents se déclenchant à l'appui du bouton",
                 Name = "Tuturu, application android en ruby",
-                GithubLink = "https://github.com/LuccioniJulien/tuturu"
+                GithubLink = "https://play.google.com/store/apps/details?id=com.VizegrafIndie.Tuturu"
             };
             var spie = new Project
             {
@@ -163,11 +163,13 @@ namespace Portfolio.Models
                 new Project_Has_Tags {ProjectId = spie.Id, TagId = webform.Id},
                 new Project_Has_Tags {ProjectId = spie.Id, TagId = netfram.Id},
                 new Project_Has_Tags {ProjectId = spie.Id, TagId = efF.Id},
+                new Project_Has_Tags {ProjectId = spie.Id, TagId = csharp.Id},
 
                 new Project_Has_Tags {ProjectId = amijur.Id, TagId = sqlserver.Id},
                 new Project_Has_Tags {ProjectId = amijur.Id, TagId = webform.Id},
                 new Project_Has_Tags {ProjectId = amijur.Id, TagId = netfram.Id},
                 new Project_Has_Tags {ProjectId = amijur.Id, TagId = efF.Id},
+                 new Project_Has_Tags {ProjectId = amijur.Id, TagId = csharp.Id},
 
                 new Project_Has_Tags {ProjectId = weather.Id, TagId = swift.Id},
                 new Project_Has_Tags {ProjectId = weather.Id, TagId = ios.Id},

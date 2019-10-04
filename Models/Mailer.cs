@@ -21,6 +21,7 @@ namespace Portfolio.Models
         [NotMapped]
         public string Status { set; get; }
 
+        [NotMapped]
         private EmailAddress Mail => new EmailAddress(From);
 
         [Required(ErrorMessage = "Le contenu du mail ne peut pas être vide.")]
