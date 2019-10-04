@@ -56,7 +56,7 @@ namespace Portfolio.Models
             var typeorm = new Tag("Typeorm", "is-warning");
 
             var swift = new Tag("swift", "is-danger");
-            var ios = new Tag("ios", "is-light");
+            var ios = new Tag("ios", "is-danger");
 
             context.AddRange(new List<Tag>
             {
@@ -79,18 +79,17 @@ namespace Portfolio.Models
                     "Api rest fait dans le cadre d'un projet, avec stack libre, en cours de concepteur développeur d'application au groupe Efrei." +
                     " Le but était de trouver une idée d'application et de présenter un mvp en 6 jours. Cette api est consommée par une application mobile cross platefrome (React Native)." +
                     " L'idée était de faire une application permettant à des utilisateurs d'ajouter des tags sur des livres selon leurs contenus." +
-                    " Ainsi d'autre utilisateurs peuvent trouver ces livres grace à ces tags." +
-                    " Le groupe était constitué de 3 personnes, 2 sur le front et 1 sur le back (moi).",
-                Name = "Api Rest",
+                    " Ainsi d'autre utilisateurs peuvent trouver ces livres grace à ces tags.",
+                Name = "Bookup Api",
                 GithubLink = "https://github.com/LuccioniJulien/Bookup-api"
             };
             var tuturu = new Project
             {
                 AuthorId = author.Id,
                 Description =
-                    "Application android faite avec ruboto, une gem ruby pour faire des applications android en ... ruby." +
+                    "Application android faite avec ruboto, une gem ruby pour faire des applications android en ruby." +
                     " Un bouton avec 3 animations différentes et 3 sons différents se déclenchant à l'appui du bouton",
-                Name = "Application android en ruby",
+                Name = "Tuturu, application android en ruby",
                 GithubLink = "https://github.com/LuccioniJulien/tuturu"
             };
             var spie = new Project
@@ -116,7 +115,7 @@ namespace Portfolio.Models
                 AuthorId = author.Id,
                 Description = "Api rest fait dans le cadre d'un projet tuteuré. Cette Api fourni des données pour une application mobile visant à fournir des informations"
               + " sur la cinquième extinction de masse.",
-                Name = "Api annihimal",
+                Name = "Annihimal Api",
                 GithubLink = "https://github.com/LuccioniJulien/annihimal-api"
             };
 

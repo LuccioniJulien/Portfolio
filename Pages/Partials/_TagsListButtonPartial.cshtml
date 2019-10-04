@@ -1,0 +1,8 @@
+@model List<Portfolio.Models.Tag>
+
+<div class="tags">
+    @foreach (var (name,colorClass) in Model)
+    {
+        <a name="tagsButton" id="@name" class="button @colorClass is-outlined bounceIn my-button" onclick="getPartial('/Index?handler=ProjectsPartPartial&tag=' + encodeURIComponent('@name'),'myProjects',this)">@name</a>
+    }
+</div>

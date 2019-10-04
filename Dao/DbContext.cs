@@ -1,17 +1,18 @@
+using System;
 using Portfolio.Interfaces;
 using Portfolio.Models;
 
 namespace Portfolio.Dao
 {
-    public class Db : IDb
+    public class DbContext : IDb, IDisposable
     {
-        // _context correspond au context généré par Entity Framework
         private PortfolioEntities _context;
 
         private ProjectRepo _projects;
         private MailerRepo _mailers;
+        private TagRepo _tags;
 
-        public Db(PortfolioEntities context)
+        public DbContext(PortfolioEntities context)
         {
             _context = context;
         }
@@ -39,5 +40,18 @@ namespace Portfolio.Dao
             }
         }
 
+        public TagRepo Tags
+        {
+            get
+            {
+                if (_tags == null)
+                {
+                    _tags = new TagRepo(_context);
+                }
+                return _tags;
+            }
+        }
+
+        public void Dispose() => _context.Dispose();
     }
 }

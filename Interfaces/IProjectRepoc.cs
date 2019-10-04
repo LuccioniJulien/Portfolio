@@ -5,6 +5,6 @@ namespace Portfolio.Interfaces
 {
     public interface IProjectRepo
     {
-         IEnumerable<Project> GetProjectsWithTagsByAuthor(string name);
+         IEnumerable<Project> GetProjectsWithTagsByAuthor(string name,string tag);
     }
 }

@@ -7,6 +7,6 @@ namespace Portfolio.Interfaces
     public interface IRepositoryBase<T> where T : class
     {
         T Create(T entity);
-        IEnumerable<T> FindAll(Expression<Func<T, bool>> predicat);
+        List<T> FindAll(Expression<Func<T, bool>> predicat);
     }
 }

@@ -7,25 +7,25 @@
     <link rel="stylesheet" href="~/lib/bulma/bulma.min.css"/>
     <link rel="stylesheet" href="~/css/site.css"/>
 </head>
-<body class="has-background-primary">
+<body class="">
 <header>
     <section class="section">
         <div class="container has-text-centered">
-            <h1 class="title is-1 has-text-white">Julien Luccioni</h1>
-            <h2 class="subtitle is-2 has-text-white">Développeur d'application</h2>
+            <h1 class="title is-3">Julien Luccioni</h1>
+            <h2 class="subtitle is-4">Développeur d'application</h2>
         </div>
     </section>
 </header>
 <div class="container has-text-centered">
     <div class="columns is-mobile">
         <div class="column is-one-third has-text-right">
-            <a class="button is-white has-text-primary" onClick="getPartial('/Index?handler=HomePartial')">Home</a>
+            <a id="home" name="menu" class="button is-primary" onClick="getPartial('/Index?handler=HomePartial')">Home</a>
         </div>
         <div class="column is-one-third">
-            <a class="button is-white has-text-primary" onClick="getPartial('/Index?handler=ProjectsPartial')">Projets</a>
+            <a id="project" name="menu" class="button is-primary is-outlined" onClick="getPartial('/Index?handler=ProjectsPartial')">Projets</a>
         </div>
         <div class="column is-one-third has-text-left">
-            <a class="button is-white has-text-primary" asp-area="" asp-page="/Contact">Contact</a>
+            <a id="contact" name="menu" class="button is-primary is-outlined" onClick="getPartial('/Index?handler=ContactPartial')">Contact</a>
         </div>
     </div>
 </div>

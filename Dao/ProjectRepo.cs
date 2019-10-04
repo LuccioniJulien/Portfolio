@@ -5,8 +5,6 @@ using Portfolio.Models;
 
 namespace Portfolio.Dao
 {
-    // classe ou seront rangé les requêtes concernant la table Mailer
-    // la classe Project est générée automatiquement par Entity Framework grace au designer
     public class ProjectRepo : RepositoryBase<Project>, IProjectRepo
     {
         public ProjectRepo(PortfolioEntities context) : base(context)
@@ -14,17 +12,23 @@ namespace Portfolio.Dao
 
         }
 
-        // Requête spécifique 
-        public IEnumerable<Project> GetProjectsWithTagsByAuthor(string name)
+        public IEnumerable<Project> GetProjectsWithTagsByAuthor(string name, string tag = null)
         {
-            IEnumerable<Project> projects = base.FindAll(x => x.Author.Name == name)
-                                                .Select(project =>
-                                                {
-                                                    project.Tags = _context.Prj_has_Tags.Where(pht => pht.ProjectId == project.Id)
-                                                                                        .Select(pht => pht.Tag)
-                                                                                        .ToList();
-                                                    return project;
-                                                }).OrderBy(x => x.Name);
+            IEnumerable<Project> projects;
+
+            if (tag == null)
+                projects = base.FindAll(p => p.Author.Name == name);
+            else
+                projects = base.FindAll(p => p.Author.Name == name && p.Taggeds.Select(t => t.Tag.Name).Contains(tag));
+
+
+            projects = projects.Select(project =>
+                             {
+                                 project.Tags = _context.Prj_has_Tags.Where(pht => pht.ProjectId == project.Id)
+                                                                     .Select(pht => pht.Tag)
+                                                                     .ToList();
+                                 return project;
+                             }).OrderBy(x => x.Name);
 
             return projects;
         }

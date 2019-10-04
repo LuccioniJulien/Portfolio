@@ -6,5 +6,7 @@ namespace Portfolio.Interfaces
     {
         ProjectRepo Projects { get; }
         MailerRepo Mailers { get; }
+
+        TagRepo Tags { get; }
     }
 }

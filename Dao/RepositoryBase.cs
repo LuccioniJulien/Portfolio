@@ -10,10 +10,8 @@ namespace Portfolio.Dao
     public abstract class RepositoryBase<T> : IRepositoryBase<T> where T : class
     {
         protected PortfolioEntities _context;
-        public RepositoryBase(PortfolioEntities context)
-        {
-            _context = context;
-        }
+        
+        public RepositoryBase(PortfolioEntities context) => _context = context;
 
         public T Create(T entity)
         {
@@ -22,15 +20,17 @@ namespace Portfolio.Dao
             return entity;
         }
 
-        public IEnumerable<T> FindAll(Expression<Func<T, bool>> predicat = null)
+        public List<T> FindAll(Expression<Func<T, bool>> predicat = null)
         {
             if (predicat != null)
             {
                 return this._context.Set<T>()
-                                    .Where(predicat);
+                                    .Where(predicat)
+                                    .ToList();
             }
 
-            return this._context.Set<T>();
+            return this._context.Set<T>()
+                                .ToList();
         }
     }
 }

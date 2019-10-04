@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -9,6 +10,8 @@ using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Portfolio.Dao;
 using Portfolio.Interfaces;
 using Portfolio.Models;
+using Portfolio.Utils;
+using Portfolio.ViewModels;
 
 namespace Portfolio.Pages
 {
@@ -16,27 +19,55 @@ namespace Portfolio.Pages
     {
         private readonly IDb _db;
 
-        public IndexModel(IDb db)
-        {
-            _db = db;
-        }
+        public IndexModel(IDb db) => _db = db;
 
         public List<string> Projects { get; set; }
 
         public void OnGet() { }
 
         public PartialViewResult OnGetHomePartial() => Partial("_HomePartial");
-
-        public PartialViewResult OnGetProjectsPartial()
+        public PartialViewResult OnGetContactPartial() => Partial("_ContactPartial");
+        public PartialViewResult OnGetProjectsPartial([FromQuery(Name = "tag")] string tag)
         {
-            var projects = _db.Projects.GetProjectsWithTagsByAuthor("Julien Luccioni")
-                .ToList();
-
+            var projects =_db.Projects.GetProjectsWithTagsByAuthor("Julien Luccioni").ToList();
+            var model = new ProjectsViewModel()
+            {
+                Projects = projects,
+                Tags = _db.Tags.GetAllTagAttributed()
+            };
             return new PartialViewResult
             {
                 ViewName = "_ProjectsPartial",
-                ViewData = new ViewDataDictionary<IEnumerable<Project>>(ViewData, projects)
+                ViewData = new ViewDataDictionary<ProjectsViewModel>(ViewData, model)
             };
+        }
+
+        public PartialViewResult OnGetProjectsPartPartial([FromQuery(Name = "tag")] string tag)
+        {
+            if(!string.IsNullOrEmpty(tag))
+                tag = WebUtility.UrlDecode(tag);
+                
+            var projects =_db.Projects.GetProjectsWithTagsByAuthor("Julien Luccioni",tag).ToList();
+
+            return new PartialViewResult
+            {
+                ViewName = "_ProjectsPartPartial",
+                ViewData = new ViewDataDictionary<List<Project>>(ViewData, projects)
+            };
+        }
+
+        [BindProperty]
+        public Mailer Mail { get; set; }
+        public IActionResult OnPostContactPartial()
+        {
+            if (!ModelState.IsValid)
+                return Partial("_ContactPartial");
+
+            _db.Mailers.Create(Mail);
+            MailHelper.Send(Mail);
+            Console.WriteLine("Email Sent");
+
+            return Partial("_ContactPartial");
         }
     }
 }

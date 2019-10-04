@@ -31,7 +31,7 @@ namespace Portfolio
                 .AddDbContext<PortfolioEntities>()
                 .BuildServiceProvider();
             // injection de dépendance pour la couche d'accès aux données
-            services.AddScoped<IDb, Db>();
+            services.AddScoped<IDb, DbContext>();
             services.AddEnv(builder =>
             {
                 builder

@@ -1,20 +1,24 @@
 @model Portfolio.Models.Mailer
 
 <div class="container" style="width:450px; height: 100%;">
-    <form method="POST">
-        <span class="has-text-danger is-danger" asp-validation-for="From"></span>
-        <input class="input is-with-margin-top"
+    <form id="mailler" method="post" onsubmit="return false">
+        <span class="has-text-danger is-danger bounceIn" asp-validation-for="From"></span>
+        <input 
+                class="input is-with-margin-top bounceIn"
                placeholder="Votre Email"
                type="text"
                asp-for="From">
-        <span class="has-text-danger is-danger" asp-validation-for="Message"></span>
-        <TextArea class="textarea is-with-margin-top"
+        <span class="has-text-danger is-danger bounceIn" asp-validation-for="Message"></span>
+        <TextArea 
+        class="textarea is-with-margin-top bounceIn"
                    type="text"
                    placeholder="Message"
                    asp-for="Message">
         </TextArea>
-        <input
-            type="submit"
-            class="button is-white has-text-primary is-with-margin-top"/>
+        <button
+            onclick="postMail()"
+            class="button is-primary is-with-margin-top bounceIn">
+            Valider
+            </button>
     </form>
 </div>

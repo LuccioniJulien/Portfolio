@@ -13,10 +13,7 @@ namespace Portfolio.Pages
     {
         private readonly IDb _db;
 
-        public ContactModel(IDb db)
-        {
-            _db = db;
-        }
+        public ContactModel(IDb db) => _db = db;
 
         [BindProperty]
         public Mailer Mail { get; set; }
@@ -24,15 +21,11 @@ namespace Portfolio.Pages
         public async Task<IActionResult> OnPost()
         {
             if (!ModelState.IsValid)
-            {
                 return Page();
-            }
 
             _db.Mailers.Create(Mail);
             if (await MailHelper.Send(Mail))
-            {
                 Console.WriteLine("Email Sent");
-            }
 
             return RedirectToPage("/success");
         }
