@@ -27,6 +27,8 @@ namespace Portfolio.Pages
             if (await MailHelper.Send(Mail))
                 Console.WriteLine("Email Sent");
 
+            Mail.Status = "Succés";
+
             return RedirectToPage("/success");
         }
     }

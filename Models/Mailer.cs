@@ -18,6 +18,9 @@ namespace Portfolio.Models
         [Required(ErrorMessage = "L'email est requis.")]
         public string From { set; get; }
 
+        [NotMapped]
+        public string Status { set; get; }
+
         private EmailAddress Mail => new EmailAddress(From);
 
         [Required(ErrorMessage = "Le contenu du mail ne peut pas être vide.")]

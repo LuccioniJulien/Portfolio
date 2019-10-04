@@ -1,6 +1,7 @@
 @model Portfolio.Models.Mailer
 
 <div class="container" style="width:450px; height: 100%;">
+    <Label class="has-text-primary">@Model?.Status</label>
     <form id="mailler" method="post" onsubmit="return false">
         <span class="has-text-danger is-danger bounceIn" asp-validation-for="From"></span>
         <input 

@@ -45,9 +45,10 @@ namespace Portfolio.Models
             var node = new Tag("node", "is-warning");
             var sqlserver = new Tag("sql-server", "is-warning");
             var postg = new Tag("postgresql", "is-link");
-            var ruby = new Tag("ruby", "is-warning");
+            var ruby = new Tag("ruby", "is-danger");
             var android = new Tag("android", "is-primary");
             var webform = new Tag("webform", "is-info");
+            var mvc = new Tag("mvc", "is-info");
             var netfram = new Tag(".net framework", "is-primary");
             var efF = new Tag("Entity Framework", "is-warning");
             var efc = new Tag("EF core", "is-warning");
@@ -72,6 +73,7 @@ namespace Portfolio.Models
                 Name = "Portfolio",
                 GithubLink = "https://github.com/LuccioniJulien/Portfolio"
             };
+
             var api = new Project
             {
                 AuthorId = author.Id,
@@ -79,7 +81,7 @@ namespace Portfolio.Models
                     "Api rest fait dans le cadre d'un projet, avec stack libre, en cours de concepteur développeur d'application au groupe Efrei." +
                     " Le but était de trouver une idée d'application et de présenter un mvp en 6 jours. Cette api est consommée par une application mobile cross platefrome (React Native)." +
                     " L'idée était de faire une application permettant à des utilisateurs d'ajouter des tags sur des livres selon leurs contenus." +
-                    " Ainsi d'autre utilisateurs peuvent trouver ces livres grace à ces tags.",
+                    " Ainsi d'autre utilisateurs peuvent trouver ces livres grâce à ces tags.",
                 Name = "Bookup Api",
                 GithubLink = "https://github.com/LuccioniJulien/Bookup-api"
             };
@@ -96,16 +98,25 @@ namespace Portfolio.Models
             {
                 AuthorId = author.Id,
                 Description =
-                    "Maintient, correction et évolution d’une suite applicative à destination d’une filiale (Applications de gestion des abonnements clients et facturation pour des piscines et des parkings)." +
-                    " Développement d'une application de gestion de dossiers de contentieux.",
-                Name = "Suite applicative service BtoC de Spie Batignolle Amitec",
+                    "Maintient, correction et évolution d’une suite applicative à destination d’une filiale (Applications de gestion des abonnements clients et de facturation pour des piscines et des parkings).",
+                Name = "Suite applicative, service BtoC de Spie Batignolle Amitec",
                 GithubLink = string.Empty
             };
+
+            var amijur = new Project
+            {
+                AuthorId = author.Id,
+                Description =
+                    "Développement d'une application de gestion des dossiers de contentieux et de sinistre des chantiers de construction de Spie Batignolles.",
+                Name = "Amijur, service BtoC",
+                GithubLink = string.Empty
+            };
+
             var weather = new Project
             {
                 AuthorId = author.Id,
                 Description =
-                    "Application météo ios/swift. Cette app consume une api rest pour avoir les informations météorologiques.",
+                    "Application météo ios/swift. Cette application consume une api rest pour avoir les informations météorologiques.",
                 Name = "Weather app",
                 GithubLink = "https://github.com/LuccioniJulien/Weather"
             };
@@ -113,10 +124,18 @@ namespace Portfolio.Models
             var apiStypescript = new Project
             {
                 AuthorId = author.Id,
-                Description = "Api rest fait dans le cadre d'un projet tuteuré. Cette Api fourni des données pour une application mobile visant à fournir des informations"
+                Description = "Api rest fait dans le cadre d'un projet tuteuré. Cette Api fournit des données pour une application mobile visant à fournir des informations"
               + " sur la cinquième extinction de masse.",
                 Name = "Annihimal Api",
                 GithubLink = "https://github.com/LuccioniJulien/annihimal-api"
+            };
+
+            var sbe = new Project
+            {
+                AuthorId = author.Id,
+                Description = "Application de gestion des événements à l'intention des filiales de Spie Batignolles.",
+                Name = "SBevent, service BtoC",
+                GithubLink = string.Empty
             };
 
             context.AddRange(new List<Project> { portf, api, tuturu, spie, weather, apiStypescript });
@@ -145,11 +164,22 @@ namespace Portfolio.Models
                 new Project_Has_Tags {ProjectId = spie.Id, TagId = netfram.Id},
                 new Project_Has_Tags {ProjectId = spie.Id, TagId = efF.Id},
 
+                new Project_Has_Tags {ProjectId = amijur.Id, TagId = sqlserver.Id},
+                new Project_Has_Tags {ProjectId = amijur.Id, TagId = webform.Id},
+                new Project_Has_Tags {ProjectId = amijur.Id, TagId = netfram.Id},
+                new Project_Has_Tags {ProjectId = amijur.Id, TagId = efF.Id},
+
                 new Project_Has_Tags {ProjectId = weather.Id, TagId = swift.Id},
                 new Project_Has_Tags {ProjectId = weather.Id, TagId = ios.Id},
 
                 new Project_Has_Tags {ProjectId = apiStypescript.Id, TagId = typescript.Id},
-                new Project_Has_Tags {ProjectId = apiStypescript.Id, TagId = typeorm.Id}
+                new Project_Has_Tags {ProjectId = apiStypescript.Id, TagId = typeorm.Id},
+
+                new Project_Has_Tags {ProjectId = sbe.Id, TagId = mvc.Id},
+                new Project_Has_Tags {ProjectId = sbe.Id, TagId = efF.Id},
+                new Project_Has_Tags {ProjectId = sbe.Id, TagId = css.Id },
+                new Project_Has_Tags {ProjectId = sbe.Id, TagId = html.Id },
+                new Project_Has_Tags {ProjectId = sbe.Id, TagId = js.Id }
             };
 
             context.AddRange(portflien);

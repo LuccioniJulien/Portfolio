@@ -29,7 +29,7 @@ namespace Portfolio.Pages
         public PartialViewResult OnGetContactPartial() => Partial("_ContactPartial");
         public PartialViewResult OnGetProjectsPartial([FromQuery(Name = "tag")] string tag)
         {
-            var projects =_db.Projects.GetProjectsWithTagsByAuthor("Julien Luccioni").ToList();
+            var projects = _db.Projects.GetProjectsWithTagsByAuthor("Julien Luccioni").ToList();
             var model = new ProjectsViewModel()
             {
                 Projects = projects,
@@ -44,10 +44,10 @@ namespace Portfolio.Pages
 
         public PartialViewResult OnGetProjectsPartPartial([FromQuery(Name = "tag")] string tag)
         {
-            if(!string.IsNullOrEmpty(tag))
+            if (!string.IsNullOrEmpty(tag))
                 tag = WebUtility.UrlDecode(tag);
-                
-            var projects =_db.Projects.GetProjectsWithTagsByAuthor("Julien Luccioni",tag).ToList();
+
+            var projects = _db.Projects.GetProjectsWithTagsByAuthor("Julien Luccioni", tag).ToList();
 
             return new PartialViewResult
             {
@@ -58,16 +58,22 @@ namespace Portfolio.Pages
 
         [BindProperty]
         public Mailer Mail { get; set; }
-        public IActionResult OnPostContactPartial()
+        public async Task<IActionResult> OnPostContactPartial()
         {
             if (!ModelState.IsValid)
                 return Partial("_ContactPartial");
 
             _db.Mailers.Create(Mail);
-            MailHelper.Send(Mail);
-            Console.WriteLine("Email Sent");
+            await MailHelper.Send(Mail);
 
-            return Partial("_ContactPartial");
+            Mail.Status = "Mail envoyé !";
+            Mail.Message = string.Empty;
+            Mail.From = string.Empty;
+            return new PartialViewResult
+            {
+                ViewName = "_ContactPartial",
+                ViewData = new ViewDataDictionary<Mailer>(ViewData, Mail)
+            };
         }
     }
 }
