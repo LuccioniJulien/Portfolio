@@ -62,7 +62,7 @@ namespace Portfolio.Models
             context.AddRange(new List<Tag>
             {
                 csharp, netcore, html, css, js, node, sqlserver, postg, ruby, android, webform, netfram, efF, efc,
-                swift, ios,typescript,typeorm
+                swift, ios,typescript,typeorm,mvc
             });
             context.SaveChanges();
 
@@ -138,7 +138,7 @@ namespace Portfolio.Models
                 GithubLink = string.Empty
             };
 
-            context.AddRange(new List<Project> { portf, api, tuturu, spie, weather, apiStypescript });
+            context.AddRange(new List<Project> { portf, api, tuturu, spie, weather, apiStypescript,sbe,amijur });
             context.SaveChanges();
 
             var portflien = new List<Project_Has_Tags>
