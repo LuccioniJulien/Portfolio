@@ -16,6 +16,7 @@ namespace Portfolio.Models
         public int Id { get; set; }
 
         [Required(ErrorMessage = "L'email est requis.")]
+        [RegularExpression( "^[a-z0-9_\\+-]+(\\.[a-z0-9_\\+-]+)*@[a-z0-9-]+(\\.[a-z0-9]+)*\\.([a-z]{2,4})$" , ErrorMessage = "Format de mail invalide" )]
         public string From { set; get; }
 
         [NotMapped]

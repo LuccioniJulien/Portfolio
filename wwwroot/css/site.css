@@ -71,13 +71,17 @@ body {
 }
 
 .my-tags {
-  border-radius: 8px;
   width: 800px;
   margin: auto;
 }
 
-.my-button{
-margin:4px 4px 2px 2px
+.my-tags-content {
+  max-width: 100%;
+  position: relative;
+}
+
+.my-button {
+  margin: 4px 4px 2px 2px;
 }
 /*!
  * animate.css -https://daneden.github.io/animate.css/
